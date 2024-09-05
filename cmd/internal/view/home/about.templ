@@ -1,0 +1,9 @@
+package home
+
+import "github.com/kakoi-to-pirat/go-app/cmd/internal/view/layout"
+
+templ About() {
+	@layout.Base(layout.BaseProps{Title: "About this"}) {
+		<h1>About</h1>
+	}
+}
