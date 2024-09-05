@@ -1,0 +1,9 @@
+package home
+
+import "github.com/kakoi-to-pirat/go-app/cmd/internal/view/layout"
+
+templ Index() {
+	@layout.Base(layout.BaseProps{Title: "main page"}) {
+		<h1>Hello, world!</h1>
+	}
+}
