@@ -1,8 +1,7 @@
 BINPATH = bin/app
 
 .PHONY: build
-build: 
-	build-templ build-css build-js build-app
+build: build-templ build-css build-js build-app
 
 .PHONY: build-app
 build-app:
@@ -33,8 +32,7 @@ fmt-templ:
 	templ fmt cmd/internal/view
 
 .PHONY: fmt
-fmt:
-	$(MAKE) -j2 fmt-go fmt-templ
+fmt: fmt-go fmt-templ
 
 .PHONY: install-deps
 install-deps:
