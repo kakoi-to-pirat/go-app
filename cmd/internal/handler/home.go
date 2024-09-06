@@ -6,12 +6,12 @@ import (
 	"github.com/kakoi-to-pirat/go-app/cmd/internal/view/home"
 )
 
-type homeHandler struct{}
+type HomeHandler struct{}
 
-func (h homeHandler) handleIndex(w http.ResponseWriter, r *http.Request) error {
+func (h HomeHandler) HandleIndex(w http.ResponseWriter, r *http.Request) error {
 	return home.Index().Render(r.Context(), w)
 }
 
-func (h homeHandler) handleAbout(w http.ResponseWriter, r *http.Request) error {
+func (h HomeHandler) HandleAbout(w http.ResponseWriter, r *http.Request) error {
 	return home.About().Render(r.Context(), w)
 }
