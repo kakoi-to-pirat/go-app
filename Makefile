@@ -1,7 +1,8 @@
 BINPATH = bin/app
 
 .PHONY: build
-build: build-templ build-css build-js build-app
+build: 
+	build-templ build-css build-js build-app
 
 .PHONY: build-app
 build-app:
@@ -22,6 +23,23 @@ build-js:
 .PHONY: run
 run: build
 	./bin/app
+
+.PHONY: fmt-go
+fmt-go:
+	gofmt -s -w cmd/
+
+.PHONY: fmt-templ
+fmt-templ:
+	templ fmt cmd/internal/view
+
+.PHONY: fmt
+fmt:
+	$(MAKE) -j2 fmt-go fmt-templ
+
+.PHONY: install-deps
+install-deps:
+	npm --prefix web install
+	go mod download
 
 .PHONY: watch
 watch:
@@ -59,12 +77,3 @@ watch-assets:
 	--build.include_dir "web/public/assets" \
 	--build.include_ext "css,js" \
 	--build.delay "100"
-
-.PHONY: fmt
-fmt:
-	templ fmt cmd/internal/view
-
-.PHONY: install-deps
-install-deps:
-	npm --prefix web install
-	go mod download
